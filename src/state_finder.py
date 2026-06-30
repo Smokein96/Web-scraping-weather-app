@@ -31,4 +31,4 @@ def location_finder(city:str) :
         parsed = data[0]["address"]["state"].replace(" ","-").lower()
         return parsed
     else:
-        return data[0]["address"]["state"]
+        return data[0]["address"]["state"]  
