@@ -7,7 +7,7 @@ city = input("enter city name :")
 
 state = location_finder(city)
 if state == None:
-    print("no city found")
+    raise ValueError(f"'{city}' is not a valid Indian city.")
     exit()
 
 url = f"https://www.aqi.in/weather/in/india/{state.lower()}/{city.lower()}"
@@ -34,4 +34,18 @@ humidity = slices[1].replace("humidity ","")
 wind = slices[2].replace("wind ","")
 pressure = slices[3].replace("pressure ","").replace("(", "").replace(")", "")
 
-print(f"State : {state}\n Temperature : {temperature}\n Humidity :{humidity}\n Wind:{wind}\n Pressure :{pressure}")
+weather = {
+    "state":state,
+    "temperature": temperature,
+    "humidity": humidity,
+    "wind": wind,
+    "pressure": pressure,
+}
+
+print(
+    f"State : {weather['state']}\n"
+    f"Temperature : {weather['temperature']}\n"
+    f"Humidity : {weather['humidity']}\n"
+    f"Wind : {weather['wind']}\n"
+    f"Pressure : {weather['pressure']}"
+)
